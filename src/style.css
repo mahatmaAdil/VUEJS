@@ -1,1 +1,402 @@
-/* ===== Base ===== */ * { box-sizing: border-box; } html, body { height: 100%; } body{ margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color:#0f172a; background:#fff; } .auth{ width: 100%; height: 100vh; display:flex; overflow:hidden; background:#fff; } .left, .right{ flex: 0 0 50%; } /* ===== LEFT ===== */ .left{ position: relative; background: #fff; overflow: hidden; /* чтобы круги не лезли куда не надо */ } .left__inner{ max-width: 520px; margin: 0 auto; position: relative; z-index: 1; padding: 96px 92px 0; } /* КОЛЬЦА НА ФОНЕ — СТАБИЛЬНО */ .left::before{ content:""; position:absolute; opacity: .45; /* центр по логотипу */ left: 50%; top: 118px; /* ВАЖНО: фиксированная точка */ width: 980px; height: 980px; transform: translate(-50%, -50%); pointer-events:none; background: radial-gradient(circle, transparent 0 78px, rgba(37,99,235,.08) 79px 80px, transparent 81px 160px), radial-gradient(circle, transparent 0 160px, rgba(37,99,235,.06) 161px 162px, transparent 163px 260px), radial-gradient(circle, transparent 0 260px, rgba(37,99,235,.045) 261px 262px, transparent 263px 380px), radial-gradient(circle, transparent 0 380px, rgba(37,99,235,.035) 381px 382px, transparent 383px 520px), radial-gradient(circle, transparent 0 520px, rgba(37,99,235,.03) 521px 522px, transparent 523px 720px); opacity: .9; z-index: 0; } /* Brand area */ .brand{ position: relative; width: 100%; display:flex; justify-content:center; margin-bottom: 22px; } /* Rings are anchored to the logo */ /* Your real logo */ .brand__logo{ width: 48px; height: 48px; display:block; margin: 0 auto; } /* Typography close to PNG */ .h1{ margin: 10px 0 12px; font-size: 36px; line-height: 44px; letter-spacing: -0.02em; font-weight: 800; text-align:center; color:#111827; } .sub{ margin: 0 auto 34px; max-width: 420px; text-align:center; font-size: 14px; line-height: 22px; color:#6b7280; } /* Form */ .form{ width: 100%; } .field{ display:block; margin: 0 0 18px; } .label{ display:block; margin: 0 0 10px; font-size: 12px; font-weight: 700; color:#374151; } .input{ width: 100%; height: 46px; border-radius: 999px; border: 1px solid #e5e7eb; background:#fff; padding: 0 18px; font-size: 14px; outline:none; } .input::placeholder{ color:#9ca3af; } .input:focus{ border-color: rgba(37,99,235,.55); box-shadow: 0 0 0 4px rgba(37,99,235,.10); } .row{ display:flex; align-items:center; justify-content:space-between; margin: 2px 2px 22px; } .link{ color:#2563eb; text-decoration:none; font-size: 13px; font-weight: 700; } .link:hover{ text-decoration: underline; } /* Checkbox (round) */ .check{ display:flex; align-items:center; gap: 10px; cursor:pointer; user-select:none; } .check__input{ position:absolute; opacity:0; pointer-events:none; } .check__dot{ width: 14px; height: 14px; border-radius: 999px; border: 1px solid #d1d5db; background:#fff; display:inline-block; position:relative; } .check__input:checked + .check__dot{ border-color:#2563eb; background:#2563eb; } .check__text{ font-size: 13px; color:#6b7280; font-weight: 600; } .btn{ width: 100%; height: 46px; border-radius: 999px; border: 1px solid transparent; display:flex; align-items:center; justify-content:center; gap: 10px; font-size: 14px; font-weight: 800; cursor:pointer; } .btn--primary{ background:#2563eb; color:#fff; box-shadow: 0 18px 32px rgba(37,99,235,.22); } .btn--primary:hover{ transform: translateY(1px); } .btn--ghost{ margin-top: 14px; background:#fff; border-color:#e5e7eb; color:#111827; } .btn--ghost:hover{ transform: translateY(1px); } .g{ width: 18px; height: 18px; display:block; } .bottom{ margin: 22px 0 0; text-align:center; font-size: 13px; color:#6b7280; } /* Footer fixed like in PNG */ .copy{ position: fixed; left: 24px; bottom: 20px; font-size: 12px; color: #9ca3af; white-space: nowrap; z-index: 10; } /* ===== RIGHT ===== */ .right{ position:relative; } .hero{ width:100%; height:100%; position:relative; } .hero__img{ width:100%; height:100%; object-fit: cover; display:block; transform: none; } /* bottom glass band */ .overlay{ position:absolute; left:0; right:0; bottom:0; height: 320px; /* matches the visible band height */ display:flex; align-items:flex-end; padding: 0 0 0; background: linear-gradient(to top, rgba(15,23,42,.55) 0%, rgba(15,23,42,.22) 55%, rgba(15,23,42,0) 100% ); } .overlay__inner{ width: 100%; padding: 28px 34px 26px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); } /* Quote */ .quote{ margin: 0 0 22px; color: rgba(255,255,255,.96); font-size: 30px; line-height: 36px; font-weight: 800; letter-spacing: -0.02em; max-width: 560px; } /* Meta */ .meta{ display:flex; align-items:flex-end; justify-content:space-between; gap: 16px; } .name{ color:#fff; font-size: 34px; line-height: 38px; font-weight: 900; margin: 0 0 10px; } .role{ color: rgba(255,255,255,.92); font-size: 15px; font-weight: 700; margin: 0 0 8px; } .org{ color: rgba(255,255,255,.86); font-size: 14px; font-weight: 700; } .stars{ color: rgba(255,255,255,.95); font-size: 18px; letter-spacing: 5px; white-space: nowrap; } /* Bottom-right nav circles */ .nav{ margin-top: 18px; display:flex; justify-content:flex-end; gap: 12px; } .circle{ width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,.55); background: rgba(255,255,255,.12); color:#fff; font-size: 22px; cursor:pointer; } .circle:hover{ background: rgba(255,255,255,.16); transform: translateY(1px); } .a:hover{transform: translateY(1px);}
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Arial, sans-serif;
+  color: #0f172a;
+  background: #fff;
+}
+
+.auth {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background: #fff;
+}
+
+.left,
+.right {
+  flex: 0 0 50%;
+}
+
+/* ===== LEFT ===== */
+.left {
+  position: relative;
+  background: #fff;
+  overflow: hidden; /* чтобы круги не лезли куда не надо */
+}
+
+.left__inner {
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 96px 92px 0;
+}
+
+/* КОЛЬЦА НА ФОНЕ — СТАБИЛЬНО */
+.left::before {
+  content: "";
+  position: absolute;
+
+  /* центр по логотипу */
+  left: 50%;
+  top: 118px;
+
+  /* ВАЖНО: фиксированная точка */
+  width: 980px;
+  height: 980px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+
+  background: radial-gradient(
+      circle,
+      transparent 0 78px,
+      rgba(37, 99, 235, 0.08) 79px 80px,
+      transparent 81px 160px
+    ),
+    radial-gradient(
+      circle,
+      transparent 0 160px,
+      rgba(37, 99, 235, 0.06) 161px 162px,
+      transparent 163px 260px
+    ),
+    radial-gradient(
+      circle,
+      transparent 0 260px,
+      rgba(37, 99, 235, 0.045) 261px 262px,
+      transparent 263px 380px
+    ),
+    radial-gradient(
+      circle,
+      transparent 0 380px,
+      rgba(37, 99, 235, 0.035) 381px 382px,
+      transparent 383px 520px
+    ),
+    radial-gradient(
+      circle,
+      transparent 0 520px,
+      rgba(37, 99, 235, 0.03) 521px 522px,
+      transparent 523px 720px
+    );
+
+  opacity: 0.9;
+  z-index: 0;
+}
+
+/* Brand area */
+.brand {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+/* Your real logo */
+.brand__logo {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Typography close to PNG */
+.h1 {
+  margin: 10px 0 12px;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-align: center;
+  color: #111827;
+}
+
+.sub {
+  margin: 0 auto 34px;
+  max-width: 420px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 22px;
+  color: #6b7280;
+}
+
+/* Form */
+.form {
+  width: 100%;
+}
+
+.field {
+  display: block;
+  margin: 0 0 18px;
+}
+
+.label {
+  display: block;
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.input {
+  width: 100%;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  padding: 0 18px;
+  font-size: 14px;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:focus {
+  border-color: rgba(37, 99, 235, 0.55);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 2px 22px;
+}
+
+.link {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Checkbox (round) */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.check__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.check__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  display: inline-block;
+  position: relative;
+}
+
+.check__input:checked + .check__dot {
+  border-color: #2563eb;
+  background: #2563eb;
+}
+
+.check__text {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.btn {
+  width: 100%;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 18px 32px rgba(37, 99, 235, 0.22);
+}
+
+.btn--primary:hover {
+  transform: translateY(1px);
+}
+
+.btn--ghost {
+  margin-top: 14px;
+  background: #fff;
+  border-color: #e5e7eb;
+  color: #111827;
+}
+
+.btn--ghost:hover {
+  transform: translateY(1px);
+}
+
+.g {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.bottom {
+  margin: 22px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Footer fixed like in PNG */
+.copy {
+  position: fixed;
+  left: 24px;
+  bottom: 20px;
+  font-size: 12px;
+  color: #9ca3af;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* ===== RIGHT ===== */
+.right {
+  position: relative;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: none;
+}
+
+/* bottom glass band */
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 320px; /* matches the visible band height */
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.55) 0%,
+    rgba(15, 23, 42, 0.22) 55%,
+    rgba(15, 23, 42, 0) 100%
+  );
+}
+
+.overlay__inner {
+  width: 100%;
+  padding: 28px 34px 26px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Quote */
+.quote {
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  max-width: 560px;
+}
+
+/* Meta */
+.meta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.name {
+  color: #fff;
+  font-size: 34px;
+  line-height: 38px;
+  font-weight: 900;
+  margin: 0 0 10px;
+}
+
+.role {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.org {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.stars {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 18px;
+  letter-spacing: 5px;
+  white-space: nowrap;
+}
+
+/* Bottom-right nav circles */
+.nav {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.circle:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(1px);
+}
+
+.a:hover {
+  transform: translateY(1px);
+}

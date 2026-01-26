@@ -29,9 +29,10 @@ function goLogin() {
         Your password has been successfully reset.<br />
         Click below to log in magically.
       </p>
-        <button type="button" class="auth-submit" @click="goLogin">Continue</button>
-        <button type="button" class="auth-back" @click="goLogin">
-
+      <button type="button" class="auth-submit" @click="goLogin">
+        Continue
+      </button>
+      <button type="button" class="auth-back" @click="goLogin">
         <span class="backIcon" aria-hidden="true">←</span>
         Back to log in
       </button>

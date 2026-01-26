@@ -27,29 +27,28 @@
       </p>
 
       <form class="auth-form" @submit.prevent="onSubmit">
-        <div class="field">
-          <label class="label" for="password">Password</label>
-          <input
-            id="password"
-            v-model="password"
-            class="input"
-            type="password"
-            autocomplete="new-password"
-            placeholder="Enter password"
-          />
-        </div>
+        <div v-for="f in fields" :key="f.key" class="field">
+          <label class="label" :for="f.key">{{ f.label }}</label>
 
-        <div class="field">
-          <label class="label" for="confirmPassword">Confirm password</label>
           <input
-            id="confirmPassword"
-            v-model="confirmPassword"
+            :id="f.key"
+            v-model="form[f.model]"
             class="input"
-            type="password"
-            autocomplete="new-password"
-            placeholder="Confirm password"
+            :type="f.type"
+            :autocomplete="f.autocomplete"
+            :placeholder="f.placeholder"
           />
-          <p v-if="touched && confirmPassword && !passwordsMatch" class="error">
+
+          <!-- уникальная ошибка только для confirm -->
+          <p
+            v-if="
+              f.key === 'confirmPassword' &&
+              touched &&
+              form.confirmPassword &&
+              !passwordsMatch
+            "
+            class="error"
+          >
             Passwords do not match
           </p>
         </div>
@@ -69,6 +68,7 @@
             </span>
             Must be at least 8 characters
           </li>
+
           <li class="rule" :class="{ active: hasSpecial }">
             <span class="ruleIcon" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -101,6 +101,79 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { computed, reactive, ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const form = reactive({
+  password: "",
+  confirmPassword: "",
+});
+
+const fields = [
+  {
+    key: "password",
+    model: "password",
+    label: "Password",
+    type: "password",
+    autocomplete: "new-password",
+    placeholder: "Enter password",
+  },
+  {
+    key: "confirmPassword",
+    model: "confirmPassword",
+    label: "Confirm password",
+    type: "password",
+    autocomplete: "new-password",
+    placeholder: "Confirm password",
+  },
+];
+
+const goLogin = () => router.push({ name: "login" });
+
+const touched = ref(false); // чтобы не орать ошибкой сразу
+const isSubmitting = ref(false);
+
+const p = computed(() => form.password.trim());
+const c = computed(() => form.confirmPassword.trim());
+
+const passwordsMatch = computed(
+  () => p.value && c.value && p.value === c.value,
+);
+
+const hasMinLen = computed(() => form.password.length >= 8);
+const hasSpecial = computed(() => /[^A-Za-z0-9]/.test(form.password));
+
+const isFormValid = computed(
+  () => hasMinLen.value && hasSpecial.value && passwordsMatch.value,
+);
+
+async function onSubmit() {
+  touched.value = true;
+
+  console.log("submit", {
+    valid: isFormValid.value,
+    minLen: hasMinLen.value,
+    special: hasSpecial.value,
+    match: passwordsMatch.value,
+    p: form.password,
+    c: form.confirmPassword,
+  });
+
+  if (!isFormValid.value) return;
+
+  isSubmitting.value = true;
+  try {
+    // ✅ правильный переход
+    await router.replace({ name: "success" });
+  } finally {
+    isSubmitting.value = false;
+  }
+}
+</script>
 
 <style scoped>
 .auth-right {
@@ -282,57 +355,6 @@
   background: rgba(47, 109, 246, 1);
 }
 </style>
-
-<script setup>
-import { computed, ref } from "vue";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
-
-const password = ref("");
-const confirmPassword = ref("");
-
-
-
-const goLogin = () => router.push("/login");
-
-
-
-const touched = ref(false); // чтобы не орать ошибкой сразу
-const isSubmitting = ref(false);
-
-const p = computed(() => password.value.trim());
-const c = computed(() => confirmPassword.value.trim());
-
-const passwordsMatch = computed(() => p.value && c.value && p.value === c.value);
-
-const hasMinLen = computed(() => password.value.length >= 8);
-const hasSpecial = computed(() => /[^A-Za-z0-9]/.test(password.value));
-
-const isFormValid = computed(() =>
-  hasMinLen.value && hasSpecial.value && passwordsMatch.value
-);
-
-
-async function onSubmit() {
-  touched.value = true;
-
-  console.log("submit", {
-    valid: isFormValid.value,
-    minLen: hasMinLen.value,
-    special: hasSpecial.value,
-    match: passwordsMatch.value,
-    p: password.value,
-    c: confirmPassword.value,
-  });
-
-  if (!isFormValid.value) return;
-
-  await router.replace("/forgot/success");
-}
-
-
-</script>
 
 <!-- <style scoped>
 /* такой же центрированный стиль, как в CheckEmail */

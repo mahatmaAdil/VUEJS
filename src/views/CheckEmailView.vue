@@ -7,11 +7,12 @@
     <h1 class="check__title">Check your email</h1>
 
     <p class="check__sub">
-      We sent a password reset link to
-      <strong>{{ email }}</strong>
+            We sent a password reset link to
+                <strong>{{ email }}</strong>
     </p>
 
-    <button class="btn btn--primary" type="button" @click="goNext">
+    <button 
+    class="btn btn--primary" type="button" @click="goNext">
      Open email app
     </button>
 
@@ -41,7 +42,7 @@ const email = "olivia@smartdelivery.com";
 
 const goLogin = () => router.push("/login");
 const resend = () => console.log("resend");
-const goNext = () => router.push("/forgot/new-password");
+const goNext = () => router.push({ name: 'newPassword' });
 
 </script>
 

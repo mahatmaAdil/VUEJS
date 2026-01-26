@@ -1,13 +1,11 @@
 <template>
   <main class="auth" role="main">
-    <!-- LEFT — ОДИНАКОВАЯ ЧАСТЬ -->
     <section class="left" aria-label="Steps">
       <div class="left__inner">
         <div class="brand">
           <img class="brand__logo" :src="logo" alt="Logo" />
         </div>
 
-        <!-- steps (статичны) -->
         <div class="steps">
           <div class="step" :class="{ 'step--active': activeStep === 0 }">
             <div class="step__icon">👤</div>
@@ -21,7 +19,9 @@
             <div class="step__icon">✉️</div>
             <div>
               <div class="step__title">Check your email</div>
-              <div class="step__sub">Please check your email to get reset link.</div>
+              <div class="step__sub">
+                Please check your email to get reset link.
+              </div>
             </div>
           </div>
 
@@ -33,7 +33,7 @@
             </div>
           </div>
 
-          <div class="step" :class="{ 'step--active': activeStep === 3}" >
+          <div class="step" :class="{ 'step--active': activeStep === 3 }">
             <div class="step__icon">✅</div>
             <div>
               <div class="step__title">Successfully</div>
@@ -46,50 +46,74 @@
       </div>
     </section>
 
-    <!-- RIGHT — МЕНЯЕТСЯ -->
-    <section class="right">
-      <RouterView />
-    </section>
+    <Transition name="fade" mode="out-in">
+      <component :is="currentView" />
+    </Transition>
   </main>
 </template>
 
 <script setup>
-import { RouterView } from "vue-router";
-import logo from "../assets/images/logo.png";
-import { computed } from "vue";
+import { computed, markRaw } from "vue";
 import { useRoute } from "vue-router";
+
+import ForgotPasswordView from "../views/ForgotPasswordView.vue";
+import CheckEmailView from "../views/CheckEmailView.vue";
+import NewPasswordView from "../views/NewPasswordView.vue";
+import SuccessView from "../views/SuccessView.vue";
+
 const activeStep = computed(() => {
-    if (route.path === "/forgot/success") return 3;
-  if (route.path.startsWith("/forgot/new-password")) return 2;
-  if (route.path.startsWith("/forgot/check-email")) return 1;
-  return 0;
+  const map = {
+    forgot: 0,
+    checkEmail: 1,
+    newPassword: 2,
+    success: 3,
+  };
+
+  // если вдруг на лейаут попал неизвестный роут
+  return map[route.name] ?? 0;
 });
-
-
 
 const route = useRoute();
 
+const viewsMap = {
+  forgot: markRaw(ForgotPasswordView),
+  checkEmail: markRaw(CheckEmailView),
+  newPassword: markRaw(NewPasswordView),
+  success: markRaw(SuccessView),
+};
+
+const currentView = computed(() => viewsMap[route.name]);
 </script>
 
 <style scoped>
+.auth .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background: #fff;
+}
+
+.auth .right > * {
+  width: 100%;
+  max-width: 520px;
+}
+/* твои стили оставляем */
 .steps {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-
 .step {
   display: flex;
   gap: 14px;
   align-items: flex-start;
   opacity: 0.45;
 }
-
 .step--active {
   opacity: 1;
 }
-
 .step__icon {
   width: 32px;
   height: 32px;
@@ -99,18 +123,15 @@ const route = useRoute();
   place-items: center;
   color: #2563eb;
 }
-
 .step--active .step__icon {
-  background: rgba(37,99,235,.1);
-  border-color: rgba(37,99,235,.4);
+  background: rgba(37, 99, 235, 0.1);
+  border-color: rgba(37, 99, 235, 0.4);
 }
-
 .step__title {
   font-weight: 700;
   font-size: 14px;
   color: #111827;
 }
-
 .step__sub {
   margin-top: 4px;
   font-size: 13px;
