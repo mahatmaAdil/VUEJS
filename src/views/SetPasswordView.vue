@@ -30,14 +30,31 @@
         <div v-for="f in fields" :key="f.key" class="field">
           <label class="label" :for="f.key">{{ f.label }}</label>
 
-          <input
-            :id="f.key"
-            v-model="form[f.model]"
-            class="input"
-            :type="f.type"
-            :autocomplete="f.autocomplete"
-            :placeholder="f.placeholder"
-          />
+          <div class="inputWrap">
+            <input
+              :id="f.key"
+              v-model="form[f.model]"
+              class="input"
+              :type="show[f.key] ? 'text' : 'password'"
+              :autocomplete="f.autocomplete"
+              :placeholder="f.placeholder"
+            />
+
+            <button
+              v-if="f.key === 'password' || f.key === 'confirmPassword'"
+              type="button"
+              class="eyeBtn"
+              :aria-label="show[f.key] ? 'Hide password' : 'Show password'"
+              @click="toggleShow(f.key)"
+            >
+              <img
+                class="eyeIcon"
+                :src="show[f.key] ? '/openedEye.png' : '/closedEye.png'"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+          </div>
 
           <!-- уникальная ошибка только для confirm -->
           <p
@@ -107,6 +124,15 @@ import { computed, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+
+const show = reactive({
+  password: false,
+  confirmPassword: false,
+});
+
+function toggleShow(key) {
+  show[key] = !show[key];
+}
 
 const form = reactive({
   password: "",
@@ -240,6 +266,31 @@ async function onSubmit() {
   font-size: 13px;
   font-weight: 600;
   color: rgba(15, 23, 42, 0.9);
+}
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  padding-right: 44px; /* место под иконку */
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  line-height: 1;
+}
+
+.eyeIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .input {

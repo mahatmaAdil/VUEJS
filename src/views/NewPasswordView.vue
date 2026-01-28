@@ -30,14 +30,31 @@
         <div v-for="f in fields" :key="f.key" class="field">
           <label class="label" :for="f.key">{{ f.label }}</label>
 
-          <input
-            :id="f.key"
-            v-model="form[f.model]"
-            class="input"
-            :type="f.type"
-            :autocomplete="f.autocomplete"
-            :placeholder="f.placeholder"
-          />
+          <div class="inputWrap">
+            <input
+              :id="f.key"
+              v-model="form[f.model]"
+              class="input"
+              :type="show[f.key] ? 'text' : 'password'"
+              :autocomplete="f.autocomplete"
+              :placeholder="f.placeholder"
+            />
+
+            <button
+              v-if="f.key === 'password' || f.key === 'confirmPassword'"
+              type="button"
+              class="eyeBtn"
+              :aria-label="show[f.key] ? 'Hide password' : 'Show password'"
+              @click="toggleShow(f.key)"
+            >
+              <img
+                class="eyeIcon"
+                :src="show[f.key] ? '/openedEye.png' : '/closedEye.png'"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+          </div>
 
           <!-- уникальная ошибка только для confirm -->
           <p
@@ -108,6 +125,15 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
+const show = reactive({
+  password: false,
+  confirmPassword: false,
+});
+
+function toggleShow(key) {
+  show[key] = !show[key];
+}
+
 const form = reactive({
   password: "",
   confirmPassword: "",
@@ -144,7 +170,7 @@ const passwordsMatch = computed(
   () => p.value && c.value && p.value === c.value,
 );
 
-const hasMinLen = computed(() => form.password.length >= 8);
+const hasMinLen = computed(() => form.password.length >= 3);
 const hasSpecial = computed(() => /[^A-Za-z0-9]/.test(form.password));
 
 const isFormValid = computed(
@@ -176,6 +202,32 @@ async function onSubmit() {
 </script>
 
 <style scoped>
+.eyeIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  padding-right: 44px; /* место под глазик */
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  line-height: 1;
+  color: inherit;
+}
+
 .auth-right {
   width: 100%;
   height: 100%;

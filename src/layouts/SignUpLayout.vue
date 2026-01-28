@@ -183,7 +183,7 @@ const activeStep = computed(() => {
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  border: 2px solid rgba(15, 23, 42, 0.12);
   background: #fff;
   flex: 0 0 40px;
   position: relative;

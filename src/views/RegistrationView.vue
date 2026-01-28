@@ -13,8 +13,6 @@ const occupation = ref("");
 const occupations = ["Student", "Engineer", "Designer", "Manager", "Other"];
 
 function onSubmit() {
-  // TODO: валидация + API
-  // пример перехода на следующий шаг регистрации:
   router.push("/signup/checkInbox");
 }
 </script>
