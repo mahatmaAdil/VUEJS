@@ -3,7 +3,7 @@
     <section class="left" aria-label="Steps">
       <div class="left__inner">
         <div class="brand">
-          <img class="brand__logo" :src="logo" alt="Logo" />
+          <img class="brand__logo" src="/logo.png" alt="Logo" />
         </div>
 
         <div class="steps">

@@ -4,7 +4,7 @@
     <section class="left" aria-label="Login form">
       <div class="left__inner">
         <div class="brand">
-          <img class="brand__logo" :src="logo" alt="Logo" />
+          <img class="brand__logo" src="/logo.png" alt="logo" />
         </div>
 
         <h1 class="h1">Log in to your account</h1>
@@ -50,7 +50,7 @@
           <button class="btn btn--primary" type="submit">Sign in</button>
 
           <button class="btn btn--ghost" type="button">
-            <img class="g" :src="googleIcon" alt="" />
+            <img class="g" src="/search.png" alt="search" />
             <span>Sign in with Google</span>
           </button>
 
@@ -67,7 +67,7 @@
     <!-- RIGHT -->
     <section class="right" aria-label="Promo">
       <div class="hero">
-        <img class="hero__img" :src="heroImg" alt="" />
+        <img class="hero__img" src="/hero.png" alt="hero" />
 
         <div class="overlay">
           <div class="overlay__inner">
@@ -104,9 +104,7 @@
 // import { RouterLink } from "vue-router";
 
 // 1) положи картинки в src/assets/images/ (см. ниже)
-import logo from "../assets/images/logo.png";
-import googleIcon from "../assets/images/search.png";
-import heroImg from "../assets/images/hero.png";
+// import logo from "../public/logo.png";
 import { ref, computed } from "vue";
 import { useRouter, RouterLink } from "vue-router";
 
