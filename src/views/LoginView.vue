@@ -56,7 +56,7 @@
 
           <p class="bottom">
             Don't have an account?
-            <a class="link" href="#">Sign up</a>
+            <RouterLink :to="{ name: 'registration' }"> Sign Up </RouterLink>
           </p>
         </form>
 

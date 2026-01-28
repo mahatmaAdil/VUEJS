@@ -61,6 +61,7 @@ import CheckEmailView from "../views/CheckEmailView.vue";
 import NewPasswordView from "../views/NewPasswordView.vue";
 import SuccessView from "../views/SuccessView.vue";
 
+const route = useRoute();
 const activeStep = computed(() => {
   const map = {
     forgot: 0,
@@ -72,8 +73,6 @@ const activeStep = computed(() => {
   // если вдруг на лейаут попал неизвестный роут
   return map[route.name] ?? 0;
 });
-
-const route = useRoute();
 
 const viewsMap = {
   forgot: markRaw(ForgotPasswordView),
@@ -98,7 +97,7 @@ const currentView = computed(() => viewsMap[route.name]);
   width: 100%;
   max-width: 520px;
 }
-/* твои стили оставляем */
+
 .steps {
   margin-top: 40px;
   display: flex;
