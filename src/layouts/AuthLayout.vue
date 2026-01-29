@@ -67,7 +67,7 @@ const activeStep = computed(() => {
     forgot: 0,
     checkEmail: 1,
     newPassword: 2,
-    success: 3,
+    authSuccess: 3,
   };
 
   // если вдруг на лейаут попал неизвестный роут
@@ -78,7 +78,7 @@ const viewsMap = {
   forgot: markRaw(ForgotPasswordView),
   checkEmail: markRaw(CheckEmailView),
   newPassword: markRaw(NewPasswordView),
-  success: markRaw(SuccessView),
+  authSuccess: markRaw(SuccessView),
 };
 
 const currentView = computed(() => viewsMap[route.name]);

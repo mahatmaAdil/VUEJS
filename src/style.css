@@ -6,6 +6,7 @@
 html,
 body {
   height: 100%;
+  cursor: default;
 }
 
 body {
@@ -65,39 +66,6 @@ body {
   height: 980px;
   transform: translate(-50%, -50%);
   pointer-events: none;
-
-  background:
-    radial-gradient(
-      circle,
-      transparent 0 78px,
-      rgba(37, 99, 235, 0.08) 79px 80px,
-      transparent 81px 160px
-    ),
-    radial-gradient(
-      circle,
-      transparent 0 160px,
-      rgba(37, 99, 235, 0.06) 161px 162px,
-      transparent 163px 260px
-    ),
-    radial-gradient(
-      circle,
-      transparent 0 260px,
-      rgba(37, 99, 235, 0.045) 261px 262px,
-      transparent 263px 380px
-    ),
-    radial-gradient(
-      circle,
-      transparent 0 380px,
-      rgba(37, 99, 235, 0.035) 381px 382px,
-      transparent 383px 520px
-    ),
-    radial-gradient(
-      circle,
-      transparent 0 520px,
-      rgba(37, 99, 235, 0.03) 521px 522px,
-      transparent 523px 720px
-    );
-
   opacity: 0.9;
   z-index: 0;
 }

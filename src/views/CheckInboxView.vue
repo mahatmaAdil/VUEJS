@@ -22,33 +22,32 @@ function onInput(e, i) {
   if (v && i < 3) focusIndex(i + 1);
 }
 
-function onKeydown(e, i) {
-  if (e.key === "Backspace") {
-    if (digits.value[i]) {
-      digits.value[i] = "";
-      return;
-    }
-    if (i > 0) focusIndex(i - 1);
-  }
+function onKeydown(e) {
+  const allowed = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"];
 
-  if (e.key === "ArrowLeft" && i > 0) focusIndex(i - 1);
-  if (e.key === "ArrowRight" && i < 3) focusIndex(i + 1);
-}
+  // разрешаем служебные клавиши
+  if (allowed.includes(e.key)) return;
 
-function onPaste(e) {
-  const text = (e.clipboardData?.getData("text") ?? "")
-    .replace(/\D/g, "")
-    .slice(0, 4);
-  if (!text) return;
+  // разрешаем цифры
+  if (/^\d$/.test(e.key)) return;
 
+  // всё остальное (буквы/символы) — стоп
   e.preventDefault();
-  digits.value = text.split("").concat(["", "", "", ""]).slice(0, 4);
-  focusIndex(Math.min(text.length, 3));
 }
+
+// function onPaste(e) {
+//   const text = (e.clipboardData?.getData("text") ?? "")
+//     .replace(/\D/g, "")
+//     .slice(0, 4);
+//   if (!text) return;
+
+//   e.preventDefault();
+//   digits.value = text.split("").concat(["", "", "", ""]).slice(0, 4);
+//   focusIndex(Math.min(text.length, 3));
+// }
 
 function verify() {
   // TODO: тут проверка кода через API
-  // пример перехода на следующий шаг:
   router.push({ name: "property" });
   console.log("verify code:", code.value);
 }

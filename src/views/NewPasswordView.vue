@@ -170,7 +170,7 @@ const passwordsMatch = computed(
   () => p.value && c.value && p.value === c.value,
 );
 
-const hasMinLen = computed(() => form.password.length >= 3);
+const hasMinLen = computed(() => form.password.length >= 8);
 const hasSpecial = computed(() => /[^A-Za-z0-9]/.test(form.password));
 
 const isFormValid = computed(
@@ -194,6 +194,7 @@ async function onSubmit() {
   isSubmitting.value = true;
   try {
     // ✅ правильный переход
+
     await router.replace({ name: "authSuccess" });
   } finally {
     isSubmitting.value = false;

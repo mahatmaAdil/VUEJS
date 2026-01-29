@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { RouterLink, useRouter } from "vue-router";
 
 const router = useRouter();
@@ -12,8 +12,27 @@ const occupation = ref("");
 
 const occupations = ["Student", "Engineer", "Designer", "Manager", "Other"];
 
+const touchedEmail = ref(false);
+
+// нормализуем email
+const emailNormalized = computed(() => email.value.trim().toLowerCase());
+
+// простая и адекватная проверка email
+const isEmailValid = computed(() =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailNormalized.value),
+);
+
+// показываем ошибку только если поле трогали
+const showEmailError = computed(
+  () => touchedEmail.value && !isEmailValid.value,
+);
+
 function onSubmit() {
-  router.push("/signup/checkInbox");
+  touchedEmail.value = true;
+
+  if (!isEmailValid.value) return;
+
+  router.push({ name: "checkInbox" });
 }
 </script>
 
@@ -45,7 +64,7 @@ function onSubmit() {
         <h1 class="title">Your details</h1>
         <p class="subtitle">Welcome Ya! Please set your information.</p>
 
-        <form class="form" @submit.prevent="onSubmit">
+        <form class="form" @submit.prevent="onSubmit" novalidate>
           <label class="field">
             <span class="label">Name*</span>
             <input
@@ -62,10 +81,15 @@ function onSubmit() {
             <input
               v-model="email"
               class="input"
+              :class="{ 'input--error': showEmailError }"
               type="email"
               placeholder="Enter your email"
               autocomplete="email"
+              @blur="touchedEmail = true"
             />
+            <span v-if="showEmailError" class="error">
+              Enter a valid email address
+            </span>
           </label>
 
           <label class="field">
@@ -180,22 +204,7 @@ function onSubmit() {
   width: 680px;
   height: 680px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at center,
-    transparent 0 18%,
-    rgba(15, 23, 42, 0.05) 18% 18.2%,
-    transparent 18.2% 28%,
-    rgba(15, 23, 42, 0.05) 28% 28.2%,
-    transparent 28.2% 38%,
-    rgba(15, 23, 42, 0.05) 38% 38.2%,
-    transparent 38.2% 48%,
-    rgba(15, 23, 42, 0.05) 48% 48.2%,
-    transparent 48.2% 58%,
-    rgba(15, 23, 42, 0.05) 58% 58.2%,
-    transparent 58.2% 68%,
-    rgba(15, 23, 42, 0.05) 68% 68.2%,
-    transparent 68.2% 100%
-  );
+  background: radial-gradient(circle at center);
   pointer-events: none;
   opacity: 0.9;
 }
@@ -244,7 +253,8 @@ function onSubmit() {
 }
 
 .form {
-  width: 360px;
+  width: 100%;
+  max-width: 360px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -281,6 +291,16 @@ function onSubmit() {
 .input:focus {
   border-color: rgba(37, 99, 235, 0.55);
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+.input--error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+}
+
+.error {
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 2px;
 }
 
 /* Phone */

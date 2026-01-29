@@ -22,33 +22,33 @@ const routes = [
     children: [
       { path: "", redirect: { name: "registration" } },
       {
-        path: "registration",
+        path: "/registration",
         name: "registration",
         component: RegistrationView,
       },
       {
-        path: "checkInbox",
+        path: "/checkInbox",
         name: "checkInbox",
         component: CheckInboxView,
       },
       {
-        path: "property",
+        path: "/property",
         name: "property",
         component: PropertyView,
       },
       {
-        path: "setPassword",
+        path: "/setPassword",
         name: "setPassword",
         component: SetPasswordView,
       },
-      { path: "success", name: "signUpSuccess", component: SuccessView },
+      { path: "/signUpSuccess", name: "signUpSuccess", component: SuccessView },
     ],
   },
   // ✅ восстановление С лейаутом
   { path: "/forgot", name: "forgot", component: AuthLayout },
   { path: "/check-email", name: "checkEmail", component: AuthLayout },
   { path: "/new-password", name: "newPassword", component: AuthLayout },
-  { path: "/success", name: "authSuccess", component: AuthLayout },
+  { path: "/authsuccess", name: "authSuccess", component: AuthLayout },
 
   { path: "/:pathMatch(.*)*", redirect: { name: "login" } },
 ];
