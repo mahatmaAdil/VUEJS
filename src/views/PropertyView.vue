@@ -21,23 +21,7 @@ function onSubmit() {
       <div class="rings" aria-hidden="true"></div>
 
       <div class="card">
-        <div class="badge" aria-hidden="true">
-          <!-- map icon -->
-          <svg class="badge__icon" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M10 6l4-2 6 3v13l-6-3-4 2-6-3V3l6 3Z"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M10 6v13M14 4v13"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-            />
-          </svg>
-        </div>
+        <div class="icon" aria-hidden="true">🗺️</div>
 
         <h1 class="title">Your property</h1>
         <p class="subtitle">
@@ -140,20 +124,6 @@ function onSubmit() {
 </template>
 
 <style scoped>
-/* rings background */
-.rings {
-  position: absolute;
-  left: 50%;
-  top: 0px;
-  transform: translateX(-50%);
-  width: 720px;
-  height: 720px;
-  border-radius: 50%;
-  background: radial-gradient(circle at center);
-  pointer-events: none;
-  opacity: 0.9;
-}
-
 .card {
   position: relative;
   z-index: 1;
@@ -162,24 +132,6 @@ function onSubmit() {
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.badge {
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  background: rgba(255, 255, 255, 0.85);
-}
-
-.badge__icon {
-  width: 22px;
-  height: 22px;
-  color: rgba(15, 23, 42, 0.65);
 }
 
 .title {

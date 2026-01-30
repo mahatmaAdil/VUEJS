@@ -1,24 +1,7 @@
 <template>
   <section class="auth-right">
     <div class="auth-card">
-      <div class="auth-icon" aria-hidden="true">
-        <span class="auth-iconCircle">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M7 10h10M7 14h7"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-            />
-            <path
-              d="M6 20h12a2 2 0 0 0 2-2V8a4 4 0 0 0-4-4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-      </div>
+      <div class="icon" aria-hidden="true">📝</div>
 
       <h1 class="auth-title">Set new password</h1>
       <p class="auth-subtitle">
@@ -218,21 +201,6 @@ async function onSubmit() {
   align-items: center;
 }
 
-.auth-icon {
-  display: grid;
-  place-items: center;
-}
-
-.auth-iconCircle {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  display: grid;
-  place-items: center;
-  color: rgba(15, 23, 42, 0.9);
-}
-
 .auth-title {
   margin: 16px 0 8px;
   font-size: 36px;
@@ -256,24 +224,9 @@ async function onSubmit() {
   flex-direction: column;
 }
 
-/* .field {
-  margin-bottom: 16px;
-} */
-
-/* .label {
-  display: block;
-  margin: 0 0 10px;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(15, 23, 42, 0.9);
-} */
 .inputWrap {
   position: relative;
 }
-
-/* .input {
-  padding-right: 44px; 
-} */
 
 .eyeBtn {
   position: absolute;
@@ -292,27 +245,6 @@ async function onSubmit() {
   height: 20px;
   display: block;
 }
-
-/* .input {
-  width: 100%;
-  height: 48px;
-  border-radius: 999px;
-  border: 1px solid rgba(203, 213, 225, 1);
-  padding: 0 18px;
-  font-size: 14px;
-  outline: none;
-} */
-
-/* .input:focus {
-  border-color: rgba(47, 109, 246, 0.8);
-  box-shadow: 0 0 0 4px rgba(47, 109, 246, 0.12);
-} */
-
-/* .error {
-  margin: 10px 0 0;
-  font-size: 12px;
-  color: rgba(239, 68, 68, 1);
-} */
 
 .password-rules {
   margin: 2px 0 18px;
@@ -386,23 +318,5 @@ async function onSubmit() {
 .backIcon {
   font-size: 18px;
   line-height: 1;
-}
-
-.auth-dots {
-  margin-top: 40px;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.auth-dots span {
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: rgba(226, 232, 240, 1);
-}
-
-.auth-dots .active {
-  background: rgba(47, 109, 246, 1);
 }
 </style>

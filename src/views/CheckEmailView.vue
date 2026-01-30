@@ -1,9 +1,8 @@
 <template>
   <section class="right">
     <div class="right__inner">
-      <div class="rings" aria-hidden="true"></div>
       <div class="check">
-        <div class="check__icon">✉️</div>
+        <div class="icon">✉️</div>
 
         <h1 class="check__title">Check your email</h1>
 

@@ -1,24 +1,7 @@
 <template>
   <section class="auth-right">
     <div class="auth-card">
-      <div class="auth-icon" aria-hidden="true">
-        <span class="auth-iconCircle">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M7 10h10M7 14h7"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-            />
-            <path
-              d="M6 20h12a2 2 0 0 0 2-2V8a4 4 0 0 0-4-4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-      </div>
+      <div class="icon" aria-hidden="true">🗨️</div>
 
       <h1 class="auth-title">Set new password</h1>
       <p class="auth-subtitle">

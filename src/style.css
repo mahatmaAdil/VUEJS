@@ -57,6 +57,7 @@ body {
   align-items: stretch;
   background: #fff;
   overflow: hidden;
+  position: relative;
 }
 
 .right__inner {
@@ -64,6 +65,7 @@ body {
   max-width: 560px;
   padding: 88px 56px;
   position: relative;
+  min-height: 100%;
 }
 
 .left,
@@ -165,6 +167,7 @@ body {
 }
 
 .input {
+  z-index: 2;
   width: 100%;
   height: 46px;
   border-radius: 999px;
@@ -173,6 +176,7 @@ body {
   padding: 0 18px;
   font-size: 14px;
   outline: none;
+  transform: translateY(1px);
 }
 
 .input::placeholder {
@@ -262,6 +266,7 @@ body {
 }
 
 .btn {
+  z-index: 2;
   width: 100%;
   height: 46px;
   border-radius: 999px;
@@ -275,9 +280,10 @@ body {
   cursor: pointer;
   background-color: #2563eb;
   color: #e5e7eb;
+  transform: translateY(1px);
 }
 .btn:active {
-  transform: translateY(1px);
+  transform: translateY(2px);
 }
 
 .btn--primary {
@@ -287,7 +293,7 @@ body {
 }
 
 .btn--primary:hover {
-  transform: translateY(1px);
+  transform: translateY(2px);
 }
 
 .btn--ghost {
@@ -326,9 +332,6 @@ body {
 }
 
 /* ===== RIGHT ===== */
-.right {
-  position: relative;
-}
 
 .hero {
   width: 100%;
@@ -454,20 +457,61 @@ body {
   color: #ef4444;
   margin-top: 2px;
 }
-.dots {
+.auth-dots {
   margin-top: 40px;
   display: flex;
-  justify-content: center; /* ✅ вот это */
-  gap: 8px;
+  gap: 10px;
+  justify-content: center;
 }
 
-.dots span {
-  width: 6px;
-  height: 6px;
+.auth-dots span {
+  width: 7px;
+  height: 7px;
   border-radius: 999px;
-  background: #e5e7eb;
+  background: rgba(226, 232, 240, 1);
 }
 
-.dots .active {
-  background: #2563eb;
+.auth-dots .active {
+  background: rgba(47, 109, 246, 1);
+}
+.icon {
+  position: relative;
+  z-index: 0;
+
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  line-height: 2;
+}
+
+/* кольца, центр = иконка */
+.icon::before {
+  content: "";
+  position: absolute;
+
+  width: 980px;
+  height: 980px;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(15, 23, 42, 0.06) 0px,
+    rgba(15, 23, 42, 0.06) 1px,
+    transparent 1px,
+    transparent 42px
+  );
+
+  /* ОБРЕЗАЕМ ПО РАДИУСУ (~8 колец) */
+  -webkit-mask-image: radial-gradient(circle, #000 0 294px, transparent 370px);
+  mask-image: radial-gradient(circle, #000 0 294px, transparent 370px);
+
+  pointer-events: none;
+  z-index: 1;
 }

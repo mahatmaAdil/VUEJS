@@ -39,27 +39,9 @@ function onSubmit() {
 <template>
   <section class="right">
     <div class="right__inner">
-      <!-- круги на фоне -->
-      <div class="rings" aria-hidden="true"></div>
-
       <div class="card">
         <!-- иконка -->
-        <div class="badge" aria-hidden="true">
-          <svg class="badge__icon" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-            />
-            <path
-              d="M4.5 20c1.7-3.2 4.3-5 7.5-5s5.8 1.8 7.5 5"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-            />
-          </svg>
-        </div>
+        <div class="icon" aria-hidden="true">👤</div>
 
         <h1 class="title">Your details</h1>
         <p class="subtitle">Welcome Ya! Please set your information.</p>
@@ -179,38 +161,6 @@ function onSubmit() {
 </template>
 
 <style scoped>
-.rings {
-  position: absolute;
-  left: 50%;
-  top: 12px;
-  transform: translateX(-50%);
-  width: 680px;
-  height: 680px;
-  border-radius: 50%;
-  background: radial-gradient(circle at center);
-  pointer-events: none;
-  opacity: 0.9;
-}
-
-.badge {
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(2px);
-}
-
-.badge__icon {
-  width: 22px;
-  height: 22px;
-  color: rgba(15, 23, 42, 0.65);
-}
-
 .title {
   font-size: 40px;
   line-height: 1.15;
