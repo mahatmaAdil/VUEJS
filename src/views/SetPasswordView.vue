@@ -256,24 +256,24 @@ async function onSubmit() {
   flex-direction: column;
 }
 
-.field {
+/* .field {
   margin-bottom: 16px;
-}
+} */
 
-.label {
+/* .label {
   display: block;
   margin: 0 0 10px;
   font-size: 13px;
   font-weight: 600;
   color: rgba(15, 23, 42, 0.9);
-}
+} */
 .inputWrap {
   position: relative;
 }
 
-.input {
-  padding-right: 44px; /* место под иконку */
-}
+/* .input {
+  padding-right: 44px; 
+} */
 
 .eyeBtn {
   position: absolute;
@@ -293,7 +293,7 @@ async function onSubmit() {
   display: block;
 }
 
-.input {
+/* .input {
   width: 100%;
   height: 48px;
   border-radius: 999px;
@@ -301,18 +301,18 @@ async function onSubmit() {
   padding: 0 18px;
   font-size: 14px;
   outline: none;
-}
+} */
 
-.input:focus {
+/* .input:focus {
   border-color: rgba(47, 109, 246, 0.8);
   box-shadow: 0 0 0 4px rgba(47, 109, 246, 0.12);
-}
+} */
 
-.error {
+/* .error {
   margin: 10px 0 0;
   font-size: 12px;
   color: rgba(239, 68, 68, 1);
-}
+} */
 
 .password-rules {
   margin: 2px 0 18px;

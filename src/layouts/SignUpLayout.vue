@@ -123,49 +123,6 @@ const activeStep = computed(() => {
 </script>
 
 <style scoped>
-/* ===== Layout shell ===== */
-.auth {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  overflow: hidden;
-  background: #fff;
-}
-
-.left,
-.right {
-  flex: 0 0 50%;
-}
-
-/* ===== LEFT ===== */
-.left {
-  position: relative;
-  background: #fff;
-  border-right: 1px solid rgba(15, 23, 42, 0.06);
-}
-
-.left__inner {
-  height: 100%;
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 88px 84px 36px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* logo */
-.brand {
-  display: flex;
-  align-items: center;
-  margin-bottom: 54px;
-}
-
-.brand__logo {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-}
-
 /* steps */
 .steps {
   display: flex;

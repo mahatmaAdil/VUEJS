@@ -1,39 +1,50 @@
 <template>
-  <div class="check">
-    <div class="check__icon">✉️</div>
+  <section class="right">
+    <div class="right__inner">
+      <div class="rings" aria-hidden="true"></div>
+      <div class="check">
+        <div class="check__icon">✉️</div>
 
-    <h1 class="check__title">Check your email</h1>
+        <h1 class="check__title">Check your email</h1>
 
-    <p class="check__sub">
-      We sent a password reset link to
-      <strong>{{ email }}</strong>
-    </p>
+        <p class="check__sub">
+          We sent a password reset link to
+          <strong>{{ email }}</strong>
+        </p>
 
-    <button class="btn btn--primary" type="button" @click="goNext">
-      Open email app
-    </button>
+        <button class="btn btn--primary" type="button" @click="goNext">
+          Open email app
+        </button>
 
-    <p class="check__hint">
-      Didn’t receive the email?
-      <button class="link" @click="resend">Click to resend</button>
-    </p>
+        <p class="check__hint">
+          Didn’t receive the email?
+          <button class="link" @click="resend">Click to resend</button>
+        </p>
 
-    <button class="back" @click="goLogin">← Back to log in</button>
+        <button class="back" @click="goLogin">← Back to log in</button>
 
-    <div class="dots">
-      <span></span>
-      <span class="active"></span>
-      <span></span>
-      <span></span>
+        <div class="dots">
+          <span></span>
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
-import { useRouter } from "vue-router";
+import { computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
-const email = "olivia@smartdelivery.com";
+const route = useRoute();
+
+const email = computed(() => {
+  const e = route.query?.email;
+  return typeof e === "string" ? e : "";
+});
 
 const goLogin = () => router.push("/login");
 const resend = () => console.log("resend");
@@ -71,17 +82,6 @@ const goNext = () => router.push({ name: "newPassword" });
   font-size: 15px;
   color: #6b7280;
   margin-bottom: 28px;
-}
-
-.btn {
-  width: 320px;
-  height: 48px;
-  border-radius: 999px;
-  background: #2563eb;
-  color: #fff;
-  font-weight: 700;
-  border: none;
-  margin-bottom: 18px;
 }
 
 .check__hint {

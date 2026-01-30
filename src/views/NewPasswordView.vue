@@ -287,35 +287,6 @@ async function onSubmit() {
   margin-bottom: 16px;
 }
 
-.label {
-  display: block;
-  margin: 0 0 10px;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(15, 23, 42, 0.9);
-}
-
-.input {
-  width: 100%;
-  height: 48px;
-  border-radius: 999px;
-  border: 1px solid rgba(203, 213, 225, 1);
-  padding: 0 18px;
-  font-size: 14px;
-  outline: none;
-}
-
-.input:focus {
-  border-color: rgba(47, 109, 246, 0.8);
-  box-shadow: 0 0 0 4px rgba(47, 109, 246, 0.12);
-}
-
-.error {
-  margin: 10px 0 0;
-  font-size: 12px;
-  color: rgba(239, 68, 68, 1);
-}
-
 .password-rules {
   margin: 2px 0 18px;
   padding: 0;

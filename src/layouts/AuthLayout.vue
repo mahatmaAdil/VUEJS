@@ -85,6 +85,9 @@ const currentView = computed(() => viewsMap[route.name]);
 </script>
 
 <style scoped>
+.auth {
+}
+
 .auth .right {
   display: flex;
   align-items: center;

@@ -140,24 +140,6 @@ function onSubmit() {
 </template>
 
 <style scoped>
-.right {
-  position: relative;
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  background: #fff;
-  overflow: hidden;
-}
-
-.right__inner {
-  width: 100%;
-  max-width: 560px;
-  padding: 88px 56px;
-  position: relative;
-}
-
 /* rings background */
 .rings {
   position: absolute;
@@ -167,22 +149,7 @@ function onSubmit() {
   width: 720px;
   height: 720px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at center,
-    transparent 0 18%,
-    rgba(15, 23, 42, 0.05) 18% 18.2%,
-    transparent 18.2% 28%,
-    rgba(15, 23, 42, 0.05) 28% 28.2%,
-    transparent 28.2% 38%,
-    rgba(15, 23, 42, 0.05) 38% 38.2%,
-    transparent 38.2% 48%,
-    rgba(15, 23, 42, 0.05) 48% 48.2%,
-    transparent 48.2% 58%,
-    rgba(15, 23, 42, 0.05) 58% 58.2%,
-    transparent 58.2% 68%,
-    rgba(15, 23, 42, 0.05) 68% 68.2%,
-    transparent 68.2% 100%
-  );
+  background: radial-gradient(circle at center);
   pointer-events: none;
   opacity: 0.9;
 }
@@ -246,32 +213,6 @@ function onSubmit() {
   text-align: left;
 }
 
-.label {
-  font-size: 13px;
-  color: rgba(15, 23, 42, 0.82);
-  font-weight: 700;
-}
-
-.input {
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.18);
-  padding: 0 18px;
-  outline: none;
-  font-size: 14px;
-  color: #0f172a;
-  background: #fff;
-}
-
-.input::placeholder {
-  color: rgba(15, 23, 42, 0.45);
-}
-
-.input:focus {
-  border-color: rgba(37, 99, 235, 0.55);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
-}
-
 /* select */
 .selectWrap {
   position: relative;
@@ -308,36 +249,12 @@ function onSubmit() {
 }
 
 /* button */
-.btn {
-  height: 46px;
-  border: 0;
-  border-radius: 999px;
-  background: #2563eb;
-  color: #fff;
-  font-weight: 800;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 8px;
-}
 
 .btn:active {
   transform: translateY(1px);
 }
 
 /* bottom link */
-.bottom {
-  margin: 6px 0 0;
-  font-size: 13px;
-  color: rgba(15, 23, 42, 0.62);
-  text-align: center;
-}
-
-.link {
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 700;
-  margin-left: 6px;
-}
 
 /* dots */
 .dots {

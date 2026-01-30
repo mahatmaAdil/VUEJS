@@ -14,18 +14,20 @@
           array of benefits.
         </p>
 
-        <form class="form" @submit.prevent="onSubmit">
+        <form class="form" @submit.prevent="onSubmit" novalidate>
           <label class="field">
             <span class="label">Email</span>
             <input
               v-model="email"
-              type="email"
               class="input"
+              type="email"
               placeholder="Enter your email"
-              autocomplete="email"
-              :class="{ 'input--error': touchedEmail && !isEmailValid }"
+              :class="{ 'input--error': showEmailError }"
               @blur="touchedEmail = true"
             />
+            <span v-if="showEmailError" class="error">
+              Enter a valid email address
+            </span>
           </label>
 
           <label class="field">
@@ -56,7 +58,9 @@
 
           <p class="bottom">
             Don't have an account?
-            <RouterLink :to="{ name: 'registration' }"> Sign Up </RouterLink>
+            <RouterLink class="link" :to="{ name: 'registration' }">
+              Sign Up
+            </RouterLink>
           </p>
         </form>
 
@@ -90,7 +94,7 @@
             </div>
 
             <div class="nav" aria-hidden="true">
-              <button class="circle" type="button">!</button>
+              <button class="circle" type="button">k</button>
               <button class="circle" type="button">></button>
             </div>
           </div>
@@ -110,16 +114,10 @@ import { useRouter, RouterLink } from "vue-router";
 
 const router = useRouter();
 
-// const onSubmit = () => {
-//   localStorage.setItem("auth", "true");
-//   router.push("/app");
-// };
-
 const email = ref("");
-const password = ref("");
 
 const touchedEmail = ref(false);
-const touchedPassword = ref(false);
+// const touchedPassword = ref(false);
 const isSubmitting = ref(false);
 
 // нормализуем email
@@ -130,11 +128,15 @@ const isEmailValid = computed(() =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailNormalized.value),
 );
 
+const showEmailError = computed(
+  () => touchedEmail.value && !isEmailValid.value,
+);
+
 function onSubmit() {
   touchedEmail.value = true;
-  touchedPassword.value = true;
+  // touchedPassword.value = true;
 
-  if (!isEmailValid.value || !password.value) return;
+  if (!isEmailValid.value) return;
 
   isSubmitting.value = true;
 
@@ -145,3 +147,10 @@ function onSubmit() {
   }, 600);
 }
 </script>
+
+<style scoped>
+:deep .left {
+  max-width: 50%;
+  background-color: white;
+}
+</style>

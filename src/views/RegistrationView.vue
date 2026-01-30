@@ -32,7 +32,7 @@ function onSubmit() {
 
   if (!isEmailValid.value) return;
 
-  router.push({ name: "checkInbox" });
+  router.push({ name: "checkInbox", query: { email: emailNormalized.value } });
 }
 </script>
 
@@ -179,23 +179,6 @@ function onSubmit() {
 </template>
 
 <style scoped>
-.right {
-  flex: 0 0 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  overflow: hidden;
-  position: relative;
-}
-
-.right__inner {
-  width: 100%;
-  max-width: 560px;
-  padding: 86px 56px;
-  position: relative;
-}
-
 .rings {
   position: absolute;
   left: 50%;
@@ -207,15 +190,6 @@ function onSubmit() {
   background: radial-gradient(circle at center);
   pointer-events: none;
   opacity: 0.9;
-}
-
-.card {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 }
 
 .badge {
@@ -253,7 +227,6 @@ function onSubmit() {
 }
 
 .form {
-  width: 100%;
   max-width: 360px;
   display: flex;
   flex-direction: column;
@@ -265,42 +238,6 @@ function onSubmit() {
   flex-direction: column;
   gap: 8px;
   text-align: left;
-}
-
-.label {
-  font-size: 13px;
-  color: rgba(15, 23, 42, 0.82);
-  font-weight: 600;
-}
-
-.input {
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.18);
-  padding: 0 18px;
-  outline: none;
-  font-size: 14px;
-  color: #0f172a;
-  background: #fff;
-}
-
-.input::placeholder {
-  color: rgba(15, 23, 42, 0.45);
-}
-
-.input:focus {
-  border-color: rgba(37, 99, 235, 0.55);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
-}
-.input--error {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
-}
-
-.error {
-  font-size: 12px;
-  color: #ef4444;
-  margin-top: 2px;
 }
 
 /* Phone */
@@ -350,7 +287,6 @@ function onSubmit() {
   border-color: rgba(37, 99, 235, 0.55);
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
-
 /* Select */
 .selectWrap {
   position: relative;
@@ -384,36 +320,6 @@ function onSubmit() {
   height: 18px;
   color: rgba(15, 23, 42, 0.55);
   pointer-events: none;
-}
-
-.btn {
-  height: 46px;
-  border: 0;
-  border-radius: 999px;
-  background: #2563eb;
-  color: #fff;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 8px;
-}
-
-.btn:active {
-  transform: translateY(1px);
-}
-
-.bottom {
-  margin: 6px 0 0;
-  font-size: 13px;
-  color: rgba(15, 23, 42, 0.62);
-  text-align: center;
-}
-
-.link {
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 600;
-  margin-left: 6px;
 }
 
 .dots {

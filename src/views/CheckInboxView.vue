@@ -1,10 +1,14 @@
 <script setup>
 import { ref, computed, nextTick } from "vue";
-import { RouterLink, useRouter } from "vue-router";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 
+const route = useRoute();
 const router = useRouter();
-// если хочешь — подтягивай email из query/store, пока захардкодил
-const email = ref("olivia@proadvisor.com");
+
+const email = computed(() => {
+  const e = route.query?.email;
+  return typeof e === "string" ? e : "";
+});
 
 const digits = ref(["", "", "", ""]);
 const inputs = ref([]); // refs инпутов
@@ -141,24 +145,6 @@ function resend() {
 </template>
 
 <style scoped>
-.right {
-  position: relative;
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  background: #fff;
-  overflow: hidden;
-}
-
-.right__inner {
-  width: 100%;
-  max-width: 560px;
-  padding: 88px 56px;
-  position: relative;
-}
-
 /* rings background */
 .rings {
   position: absolute;
@@ -168,22 +154,7 @@ function resend() {
   width: 720px;
   height: 720px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at center,
-    transparent 0 18%,
-    rgba(15, 23, 42, 0.05) 18% 18.2%,
-    transparent 18.2% 28%,
-    rgba(15, 23, 42, 0.05) 28% 28.2%,
-    transparent 28.2% 38%,
-    rgba(15, 23, 42, 0.05) 38% 38.2%,
-    transparent 38.2% 48%,
-    rgba(15, 23, 42, 0.05) 48% 48.2%,
-    transparent 48.2% 58%,
-    rgba(15, 23, 42, 0.05) 58% 58.2%,
-    transparent 58.2% 68%,
-    rgba(15, 23, 42, 0.05) 68% 68.2%,
-    transparent 68.2% 100%
-  );
+  background: radial-gradient(circle at center);
   pointer-events: none;
   opacity: 0.9;
 }
