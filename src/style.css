@@ -32,6 +32,22 @@ body {
   overflow: hidden;
   background: #fff;
 }
+.auth-back {
+  margin: 16px auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: transparent;
+  color: rgba(71, 85, 105, 1);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.backIcon {
+  font-size: 18px;
+  line-height: 1;
+}
 .right {
   position: relative;
   width: 100%;
@@ -437,4 +453,21 @@ body {
   font-size: 12px;
   color: #ef4444;
   margin-top: 2px;
+}
+.dots {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center; /* ✅ вот это */
+  gap: 8px;
+}
+
+.dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.dots .active {
+  background: #2563eb;
 }

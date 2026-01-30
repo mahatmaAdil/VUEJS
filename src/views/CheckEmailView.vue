@@ -42,12 +42,12 @@ const router = useRouter();
 const route = useRoute();
 
 const email = computed(() => {
-  const e = route.query?.email;
-  return typeof e === "string" ? e : "";
+  const emailFromQuery = route.query?.email;
+  return typeof emailFromQuery === "string" ? emailFromQuery : "";
 });
 
 const goLogin = () => router.push("/login");
-const resend = () => console.log("resend");
+const resend = () => alert("BOOOOOOM!");
 const goNext = () => router.push({ name: "newPassword" });
 </script>
 
@@ -104,22 +104,5 @@ const goNext = () => router.push({ name: "newPassword" });
   font-weight: 700;
   color: #374151;
   cursor: pointer;
-}
-
-.dots {
-  margin-top: 40px;
-  display: flex;
-  gap: 8px;
-}
-
-.dots span {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: #e5e7eb;
-}
-
-.dots .active {
-  background: #2563eb;
 }
 </style>

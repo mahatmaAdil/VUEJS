@@ -6,8 +6,8 @@ const route = useRoute();
 const router = useRouter();
 
 const email = computed(() => {
-  const e = route.query?.email;
-  return typeof e === "string" ? e : "";
+  const emailFromQuery = route.query?.email;
+  return typeof emailFromQuery === "string" ? emailFromQuery : "";
 });
 
 const digits = ref(["", "", "", ""]);
@@ -15,28 +15,28 @@ const inputs = ref([]); // refs инпутов
 
 const code = computed(() => digits.value.join(""));
 
-function focusIndex(i) {
-  nextTick(() => inputs.value?.[i]?.focus?.());
+function focusIndex(index) {
+  nextTick(() => inputs.value?.[index]?.focus?.());
 }
 
-function onInput(e, i) {
-  const v = e.target.value.replace(/\D/g, "").slice(-1);
-  digits.value[i] = v;
+function onInput(event, index) {
+  const v = event.target.value.replace(/\D/g, "").slice(-1);
+  digits.value[index] = v;
 
-  if (v && i < 3) focusIndex(i + 1);
+  if (v && index < 3) focusIndex(index + 1);
 }
 
-function onKeydown(e) {
+function onKeydown(event) {
   const allowed = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"];
 
   // разрешаем служебные клавиши
-  if (allowed.includes(e.key)) return;
+  if (allowed.includes(event.key)) return;
 
   // разрешаем цифры
-  if (/^\d$/.test(e.key)) return;
+  if (/^\d$/.test(event.key)) return;
 
   // всё остальное (буквы/символы) — стоп
-  e.preventDefault();
+  event.preventDefault();
 }
 
 // function onPaste(e) {
@@ -97,16 +97,16 @@ function resend() {
         <!-- Code input circles -->
         <div class="otp" @paste="onPaste">
           <input
-            v-for="(_, i) in 4"
-            :key="i"
-            :ref="(el) => (inputs[i] = el)"
+            v-for="(_, index) in 4"
+            :key="index"
+            :ref="(el) => (inputs[index] = el)"
             class="otp__cell"
             inputmode="numeric"
             autocomplete="one-time-code"
             maxlength="1"
-            :value="digits[i]"
-            @input="(e) => onInput(e, i)"
-            @keydown="(e) => onKeydown(e, i)"
+            :value="digits[index]"
+            @input="(event) => onInput(event, index)"
+            @keydown="(event) => onKeydown(event, index)"
             aria-label="Verification digit"
           />
         </div>

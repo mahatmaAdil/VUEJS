@@ -344,23 +344,6 @@ async function onSubmit() {
   transform: none;
 }
 
-.auth-back {
-  margin: 16px auto 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border: none;
-  background: transparent;
-  color: rgba(71, 85, 105, 1);
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.backIcon {
-  font-size: 18px;
-  line-height: 1;
-}
-
 .auth-dots {
   margin-top: 40px;
   display: flex;

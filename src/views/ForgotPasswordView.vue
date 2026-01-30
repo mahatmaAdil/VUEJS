@@ -30,6 +30,17 @@
               <button class="btn btn--primary" type="submit">
                 Reset password
               </button>
+
+              <button class="auth-back" type="button" @click="goLogin">
+                <span class="backIcon" aria-hidden="true">←</span>
+                Back to log in
+              </button>
+              <div class="dots">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </form>
           </div>
         </div>
@@ -58,6 +69,8 @@ const showEmailError = computed(
   () => touchedEmail.value && !isEmailValid.value,
 );
 
+const goLogin = () => router.push({ name: "login" });
+
 const onSubmit = () => {
   touchedEmail.value = true;
 
@@ -67,14 +80,10 @@ const onSubmit = () => {
 </script>
 
 <style scoped>
-template {
+.form {
   display: flex;
+  flex-direction: column;
 }
-.card {
-  display: flex;
-  align-items: center;
-}
-
 .forgot {
   flex: 1;
   cursor: default;
